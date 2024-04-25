@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ASemiFinalACT2.MainPage">
+
+    <StackLayout>
+        
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Semi Final Activity 2" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        
+        <StackLayout Orientation="Vertical">
+            <Entry x:Name="SearchBar" Text="Input Sales Order number"/>
+            <Button x:Name="Search" Text="Search" Clicked="Search_Clicked"/>
+        </StackLayout>
+
+        <Label Text="Add ons: "/>
+        <Entry x:Name="Addons"/>
+        <Label Text="Price: "/>
+        <Entry x:Name="PriceAddons"/>
+
+        <!---->
+        <Label Text="Select Here (drop down)"/>
+        <Picker x:Name="Option1">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>- steak, salmon</x:String>
+                    <x:String>- vegetarian pasta</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!---->
+        <StackLayout Orientation="Vertical" Spacing="10">
+            <RadioButton x:Name="Option21" Content="mashed potatoes, grilled asparagus"/>
+            <RadioButton x:Name="Option22" Content="garlic bread"/>
+        </StackLayout>
+
+        <!---->
+        <StackLayout Orientation="Horizontal">
+            <CheckBox x:Name="Option31"/>
+            <Label Text="lava cake" VerticalOptions="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <CheckBox x:Name="Option32"/>
+            <Label Text="tiramisu"/>
+        </StackLayout>
+
+        <Button x:Name="Add" Clicked="Add_Clicked" Text="Add"/>
+        <Button x:Name="Update" Clicked="Update_Clicked" Text="Update"/>
+        <Button x:Name="Delete" Clicked="Delete_Clicked" Text="Delete"/>
+        
+        
+        <!--Make a table below -->
+        <ListView x:Name="Orders">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <!-- Header Row -->
+                                    <RowDefinition Height="Auto"/>
+                                    <!-- Data Rows -->
+                                    <RowDefinition Height="60"></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                                    <ColumnDefinition Width="6*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Header Labels -->
+                                <Label Grid.Row="0" Grid.Column="0" Text="Sales Order Number"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Entrees"/>
+                                <Label Grid.Row="0" Grid.Column="2" Text="Sides"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="Dessert"/>
+                                <Label Grid.Row="0" Grid.Column="4" Text="AddOn"/>
+                                <Label Grid.Row="0" Grid.Column="5" Text="Total"/>
+                                
+                                <!--
+                                HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"
+                                HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold"
+                                -->
+
+                                <!-- Data Binding to Labels -->
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding SONum}"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding ENTREES}"/>
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding SIDES}"/>
+                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding DESSERT}"/>
+                                <Label Grid.Row="1" Grid.Column="4" Text="{Binding ADD_ON}"/>
+                                <Label Grid.Row="1" Grid.Column="5" Text="{Binding TOTAL}"/>
+
+                                <BoxView Color="Navy" HeightRequest="2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"/>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+
+</ContentPage>
